@@ -1,0 +1,8 @@
+{
+  "model_name": "gpt2-xl",
+  "training_time_minutes": 5.711054392655691,
+  "final_loss": 1.2948842684427897,
+  "training_examples": 200,
+  "epochs": 3,
+  "timestamp": "2025-09-05 15:17:03"
+}

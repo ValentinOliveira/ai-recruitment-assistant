@@ -1,0 +1,123 @@
+# AI Recruitment Assistant - RTX 4060 Optimized Configuration
+# ============================================================
+# Specifically optimized for RTX 4060 8GB VRAM
+# Maximum performance while staying within memory limits
+
+# Model Configuration  
+model:
+  name: "meta-llama/Llama-3.1-8B-Instruct"
+  max_length: 512
+  cache_dir: "./models/cache"
+
+# LoRA Configuration (Optimized for RTX 4060)
+lora:
+  r: 16  # Good balance of performance vs memory
+  alpha: 32
+  dropout: 0.1
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj" 
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+# Aggressive Quantization for Memory Efficiency
+quantization:
+  use_4bit: true
+  use_nested_quant: true
+  compute_dtype: "bfloat16"
+  quant_type: "nf4"
+
+# Training Parameters (RTX 4060 Optimized)
+training:
+  num_epochs: 3
+  batch_size: 1  # Reduced for 8GB VRAM
+  gradient_accumulation_steps: 8  # Simulate batch_size=8
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  max_grad_norm: 1.0
+  
+  # Optimizer (Memory efficient)
+  optim: "adamw_bnb_8bit"
+  lr_scheduler_type: "cosine"
+  
+  # Aggressive Memory Optimization
+  gradient_checkpointing: true
+  dataloader_drop_last: true
+  group_by_length: true
+  dataloader_pin_memory: false  # Save memory
+  dataloader_num_workers: 0     # Avoid multiprocessing overhead
+  
+  # Mixed Precision (BF16 for stability)
+  fp16: false
+  bf16: true
+
+# Data Configuration
+data:
+  dataset_path: "data/training/alpaca_format.json"
+  max_examples: null
+  train_split: 0.9
+  val_split: 0.1
+  seed: 42
+
+# Paths
+paths:
+  output_dir: "models/checkpoints"
+  final_model_dir: "models/fine-tuned"
+  logs_dir: "logs"
+  data_dir: "data"
+
+# Logging (Reduced frequency to save compute)
+logging:
+  level: "INFO"
+  log_steps: 20
+  eval_steps: 100
+  save_steps: 200
+  save_total_limit: 1  # Keep only latest checkpoint
+
+# Weights & Biases
+wandb:
+  project: "ai-recruitment-assistant"
+  entity: null
+  run_name: "llama-3.1-8b-rtx4060"
+  tags:
+    - "llama-3.1"
+    - "lora"
+    - "recruitment"
+    - "rtx-4060"
+    - "8gb-vram"
+  enabled: true
+
+# Hardware Optimization (RTX 4060 Specific)
+hardware:
+  device: "cuda"
+  mixed_precision: true
+  compile_model: false  # Can cause memory issues
+  
+# Generation Settings
+generation:
+  max_new_tokens: 256
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  do_sample: true
+  repetition_penalty: 1.1
+
+# Evaluation
+evaluation:
+  eval_strategy: "steps"
+  eval_steps: 200
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+  load_best_model_at_end: false  # Save memory
+
+# Memory Management
+memory:
+  empty_cache_steps: 50  # Clear cache every 50 steps
+  max_memory_gb: 7.5     # Leave 0.5GB buffer
+  cleanup_timeout: 300   # 5 minutes

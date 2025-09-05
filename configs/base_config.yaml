@@ -1,0 +1,107 @@
+# AI Recruitment Assistant - Base Configuration
+# ==============================================
+
+# Model Configuration
+model:
+  name: "microsoft/DialoGPT-medium"  # Open model, no authentication needed
+  max_length: 512
+  cache_dir: "./models/cache"
+  
+# LoRA Configuration
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  target_modules:
+    - "c_attn"  # DialoGPT attention modules
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+# Quantization Settings
+quantization:
+  use_4bit: true
+  use_nested_quant: true
+  compute_dtype: "bfloat16"
+  quant_type: "nf4"
+
+# Training Parameters
+training:
+  num_epochs: 3
+  batch_size: 2
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  max_grad_norm: 1.0
+  
+  # Optimizer settings
+  optim: "adamw_bnb_8bit"
+  lr_scheduler_type: "cosine"
+  
+  # Memory optimization
+  gradient_checkpointing: true
+  dataloader_drop_last: true
+  group_by_length: true
+  
+  # Mixed precision
+  fp16: false
+  bf16: true
+
+# Data Configuration
+data:
+  dataset_path: "data/training/alpaca_format.json"
+  max_examples: null  # null = use all data
+  train_split: 0.9
+  val_split: 0.1
+  seed: 42
+
+# Paths
+paths:
+  output_dir: "models/checkpoints"
+  final_model_dir: "models/fine-tuned"
+  logs_dir: "logs"
+  data_dir: "data"
+
+# Logging and Monitoring
+logging:
+  level: "INFO"
+  log_steps: 10
+  eval_steps: 50
+  save_steps: 100
+  save_total_limit: 2
+  
+# Weights & Biases
+wandb:
+  project: "ai-recruitment-assistant"
+  entity: null  # Set your W&B username
+  run_name: "llama-3.1-8b-lora"
+  tags:
+    - "llama-3.1"
+    - "lora"
+    - "recruitment"
+    - "rtx-4060"
+  enabled: true
+
+# Hardware Optimization
+hardware:
+  device: "auto"  # auto, cuda, cpu
+  mixed_precision: true
+  compile_model: false  # PyTorch 2.0 compile
+  
+# Generation Settings (for inference)
+generation:
+  max_new_tokens: 256
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  do_sample: true
+  repetition_penalty: 1.1
+  pad_token_id: null  # Will be set automatically
+
+# Evaluation Settings
+evaluation:
+  eval_strategy: "steps"
+  eval_steps: 100
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+  load_best_model_at_end: false
