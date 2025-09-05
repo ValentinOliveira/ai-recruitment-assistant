@@ -78,10 +78,10 @@ ai-recruitment-assistant/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Windows with WSL2 Ubuntu 24.04
-- NVIDIA RTX 4060 (8GB VRAM) 
-- 32GB RAM
-- CUDA 12.6+ support
+- Ubuntu 24.04+ (or compatible Linux distribution)
+- NVIDIA GPU with 8GB+ VRAM (RTX 4060, RTX 3070, RTX 4070, etc.)
+- 16GB+ RAM (32GB recommended)
+- CUDA 12.0+ support
 
 ### Setup Deep Learning Environment
 
@@ -90,9 +90,9 @@ ai-recruitment-assistant/
    # Already completed
    ```
 
-2. **Setup WSL Environment**
+2. **Setup Environment**
    ```bash
-   # Run in WSL Ubuntu
+   # Run in Ubuntu terminal
    ./scripts/setup_wsl_environment.sh
    ```
 
@@ -192,10 +192,34 @@ Each phase builds upon the previous, ensuring deep understanding of:
 - **DevOps**: Automated CI/CD and deployment
 - **Cloud Engineering**: AWS services and optimization
 
+## 📊 Synthetic Dataset Approach
+
+We use **synthetic data generation** instead of web scraping for several important reasons:
+
+### **Legal & Ethical Advantages**
+- ✅ **No privacy violations** - respects individual privacy
+- ✅ **No terms of service breaches** - avoids LinkedIn/platform restrictions  
+- ✅ **GDPR compliant** - no personal data collection
+- ✅ **Copyright safe** - original generated content
+
+### **Quality & Control Benefits**
+- 🎯 **Personalized to your profile** - tailored responses using your background
+- 📈 **Consistent quality** - professional tone throughout
+- 🔧 **Controlled scenarios** - focus on successful interaction patterns
+- ⚡ **Immediate availability** - no scraping delays or rate limits
+
+### **Industry Standard Practice**
+- **OpenAI**: Uses synthetic conversations for GPT fine-tuning
+- **Meta**: Synthetic dialogues for Llama 2 Chat training
+- **Anthropic**: Curated examples for Claude development
+- **Google**: Synthetic data for conversational AI training
+
+**Result**: Higher quality, legally compliant, perfectly personalized training data! 🚀
+
 ## 🔗 Next Steps
 
-1. **Run WSL Environment Setup**: Configure CUDA + ML dependencies
-2. **Prepare Training Data**: Create recruitment-specific dataset
+1. **Setup Environment**: Configure CUDA + ML dependencies
+2. **Prepare Training Data**: Generate personalized recruitment dataset
 3. **Start Fine-tuning**: Begin Llama 3.1 8B training with LoRA
 4. **Monitor Training**: Set up W&B dashboard
 5. **Build API**: Create FastAPI endpoints for inference
