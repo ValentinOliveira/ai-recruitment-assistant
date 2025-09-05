@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moses Omondi's AI Recruitment Assistant - Website Integration Example</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .main-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .chat-container {
+            position: sticky;
+            top: 20px;
+        }
+        
+        h1 {
+            color: #1e40af;
+            margin-top: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: #1e40af;
+            margin-top: 2em;
+            font-weight: 600;
+        }
+        
+        .intro {
+            font-size: 1.2em;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 2em;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 2em 0;
+        }
+        
+        .expertise-card {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #1e40af;
+        }
+        
+        .expertise-card h3 {
+            margin-top: 0;
+            color: #1e40af;
+            font-weight: 600;
+        }
+        
+        .expertise-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .expertise-card li {
+            margin: 8px 0;
+            color: #4b5563;
+        }
+        
+        .integration-section {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 2em 0;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Fira Code', Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .highlight strong {
+            color: #92400e;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <h1>Moses Omondi's AI Recruitment Assistant</h1>
+            
+            <p class="intro">
+                Experience interactive recruitment conversations with Moses Omondi's comprehensive AI assistant. 
+                This AI represents Moses's extensive expertise in DevSecOps, MLOps, and MLSecOps, ready to 
+                answer questions about his qualifications for senior AI and security leadership roles.
+            </p>
+            
+            <div class="highlight">
+                <strong>Try the live chat →</strong> Ask about Moses's DevSecOps experience, MLOps expertise, 
+                AI security knowledge, or his qualifications for VP-level positions at major tech companies.
+            </div>
+            
+            <h2>Moses's Expertise Areas</h2>
+            
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>🔒 DevSecOps Leadership</h3>
+                    <ul>
+                        <li>CI/CD Pipeline Security</li>
+                        <li>Security Automation & SOAR</li>
+                        <li>Container & Kubernetes Security</li>
+                        <li>Zero-Trust Architecture</li>
+                        <li>Compliance Automation</li>
+                        <li>Cloud Security (AWS, Azure, GCP)</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-card">
+                    <h3>🚀 MLOps at Scale</h3>
+                    <ul>
+                        <li>Production ML Infrastructure</li>
+                        <li>Model Deployment & Monitoring</li>
+                        <li>ML Pipeline Automation</li>
+                        <li>Feature Stores & Model Registry</li>
+                        <li>A/B Testing for ML Models</li>
+                        <li>Enterprise ML Platform Design</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-card">
+                    <h3>🛡️ MLSecOps & AI Security</h3>
+                    <ul>
+                        <li>Adversarial Robustness</li>
+                        <li>Data Poisoning Prevention</li>
+                        <li>Privacy-Preserving ML</li>
+                        <li>AI Governance & Ethics</li>
+                        <li>Model Explainability</li>
+                        <li>Regulatory AI Compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-card">
+                    <h3>🎯 Executive Leadership</h3>
+                    <ul>
+                        <li>VP-Level AI Strategy</li>
+                        <li>Technical Team Leadership</li>
+                        <li>Digital Transformation</li>
+                        <li>Cross-Functional Collaboration</li>
+                        <li>Budget & Resource Management</li>
+                        <li>Industry Thought Leadership</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>Education & Background</h2>
+            <div class="expertise-card">
+                <h3>🎓 Academic Credentials</h3>
+                <ul>
+                    <li><strong>Missouri State University</strong> - MS Computer Science + Data Science Certificate</li>
+                    <li><strong>University of Mysore</strong> - BS Computer Science (2018-2021)</li>
+                    <li><strong>Kanthula Prize Award</strong> - Best International Student</li>
+                    <li><strong>Location</strong> - Springfield, Missouri</li>
+                </ul>
+            </div>
+            
+            <h2>Website Integration</h2>
+            
+            <div class="integration-section">
+                <h3>Quick Integration</h3>
+                <p>Add Moses's AI recruitment assistant to your website in 3 simple steps:</p>
+                
+                <h4>1. Include the JavaScript client:</h4>
+                <div class="code-block">
+&lt;script src="https://cdn.jsdelivr.net/gh/moses-omondi/ai-recruitment-assistant@main/web/moses-ai-client.js"&gt;&lt;/script&gt;
+                </div>
+                
+                <h4>2. Add a container element:</h4>
+                <div class="code-block">
+&lt;div id="moses-ai-chat"&gt;&lt;/div&gt;
+                </div>
+                
+                <h4>3. Initialize the chat widget:</h4>
+                <div class="code-block">
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    new MosesAIChatWidget({
+        container: 'moses-ai-chat',
+        apiUrl: 'https://your-api-endpoint.com',
+        theme: 'professional',
+        welcomeMessage: "Hi! Ask me about Moses's DevSecOps, MLOps, and AI security expertise!"
+    });
+});
+&lt;/script&gt;
+                </div>
+            </div>
+            
+            <div class="integration-section">
+                <h3>Advanced Usage</h3>
+                <p>For custom implementations, use the JavaScript client directly:</p>
+                
+                <div class="code-block">
+const client = new MosesAIClient({
+    apiUrl: 'https://your-api-endpoint.com',
+    debug: true,
+    onMessageStart: (message) => console.log('Sending:', message),
+    onMessageComplete: (response) => console.log('Received:', response),
+    onError: (error) => console.error('Error:', error)
+});
+
+// Send a message
+const response = await client.chat("Tell me about Moses's DevSecOps experience");
+console.log(response.response);
+
+// Get capabilities
+const capabilities = await client.getCapabilities();
+console.log(capabilities.expertise_areas);
+                </div>
+            </div>
+            
+            <h2>API Endpoints</h2>
+            <div class="integration-section">
+                <ul>
+                    <li><strong>POST /chat</strong> - Chat with Moses's AI assistant</li>
+                    <li><strong>GET /capabilities</strong> - Get expertise areas and role types</li>
+                    <li><strong>GET /sample-questions</strong> - Get sample recruitment questions</li>
+                    <li><strong>GET /health</strong> - Check API health status</li>
+                    <li><strong>GET /docs</strong> - Interactive API documentation</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <strong>Ready to integrate?</strong> The AI assistant is production-ready and optimized 
+                for recruitment conversations. It can handle technical deep-dives, executive positioning, 
+                and everything in between.
+            </div>
+        </main>
+        
+        <aside class="chat-container">
+            <!-- Moses AI Chat Widget will be inserted here -->
+            <div id="moses-ai-chat"></div>
+        </aside>
+    </div>
+    
+    <!-- Load the Moses AI Client -->
+    <script src="moses-ai-client.js"></script>
+    
+    <!-- Initialize the chat widget -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                new MosesAIChatWidget({
+                    container: 'moses-ai-chat',
+                    apiUrl: 'http://localhost:8000', // Change this to your production API URL
+                    theme: 'professional',
+                    debug: true,
+                    welcomeMessage: "Hi! I'm Moses Omondi's AI recruitment assistant. Ask me about Moses's DevSecOps, MLOps, and AI security expertise for senior leadership roles!",
+                    onError: (error) => {
+                        console.log('Chat unavailable - using demo mode');
+                        // In production, you might want to show a fallback message
+                    }
+                });
+            } catch (error) {
+                console.log('Moses AI Widget initialization failed:', error);
+                document.getElementById('moses-ai-chat').innerHTML = `
+                    <div style="padding: 20px; background: #f8fafc; border-radius: 12px; text-align: center; color: #64748b;">
+                        <h3>Moses AI Assistant</h3>
+                        <p>Chat widget will be available when the API is running.</p>
+                        <p><small>Start the API server to test the integration.</small></p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

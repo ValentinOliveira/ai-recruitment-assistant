@@ -1,0 +1,139 @@
+# Moses Omondi's AI Recruitment Assistant - Docker Compose
+# Production-ready deployment configuration
+
+version: '3.8'
+
+services:
+  moses-ai-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: moses-ai-assistant
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - MODEL_PATH=/app/models/moses-recruitment-assistant
+      - ENVIRONMENT=${ENVIRONMENT:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - CORS_ORIGINS=${CORS_ORIGINS:-*}
+    volumes:
+      # Mount model directory for persistent storage
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+        limits:
+          memory: ${CONTAINER_MEMORY:-8G}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 2m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - moses-ai-network
+
+  # Optional: Nginx reverse proxy for production
+  nginx:
+    image: nginx:alpine
+    container_name: moses-ai-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - moses-ai-assistant
+    restart: unless-stopped
+    networks:
+      - moses-ai-network
+    profiles:
+      - production
+
+  # Optional: Redis for caching and session management
+  redis:
+    image: redis:alpine
+    container_name: moses-ai-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    networks:
+      - moses-ai-network
+    profiles:
+      - cache
+
+  # Optional: PostgreSQL for conversation logging
+  postgres:
+    image: postgres:15-alpine
+    container_name: moses-ai-postgres
+    environment:
+      POSTGRES_DB: moses_ai
+      POSTGRES_USER: moses
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-changeme}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - moses-ai-network
+    profiles:
+      - database
+
+  # Optional: Monitoring with Prometheus and Grafana
+  prometheus:
+    image: prom/prometheus
+    container_name: moses-ai-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    restart: unless-stopped
+    networks:
+      - moses-ai-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana
+    container_name: moses-ai-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      - moses-ai-network
+    profiles:
+      - monitoring
+
+networks:
+  moses-ai-network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  postgres_data:
+  prometheus_data:
+  grafana_data:
