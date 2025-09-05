@@ -40,7 +40,7 @@ logger = logging.getLogger(__name__)
 class RecruitmentAssistantTester:
     """Test and interact with the fine-tuned recruitment assistant model."""
     
-    def __init__(self, model_path: str, base_model_name: str = "meta-llama/Llama-3.1-8B-Instruct"):
+    def __init__(self, model_path: str, base_model_name: str = "gpt2-xl"):
         self.model_path = Path(model_path)
         self.base_model_name = base_model_name
         self.model = None
@@ -96,9 +96,9 @@ class RecruitmentAssistantTester:
         else:
             bnb_config = None
         
-        # Load tokenizer
+        # Load tokenizer from base model
         self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_path,
+            self.base_model_name,
             trust_remote_code=True,
             padding_side="left"  # Left padding for generation
         )
@@ -342,7 +342,7 @@ def main():
     parser = argparse.ArgumentParser(description="Test the AI Recruitment Assistant model")
     parser.add_argument("--model-path", type=str, default="models/fine-tuned",
                        help="Path to the fine-tuned model")
-    parser.add_argument("--base-model", type=str, default="meta-llama/Llama-3.1-8B-Instruct",
+    parser.add_argument("--base-model", type=str, default="gpt2-xl",
                        help="Base model name")
     parser.add_argument("--mode", type=str, choices=["chat", "test", "benchmark", "all"],
                        default="chat", help="Mode to run")
