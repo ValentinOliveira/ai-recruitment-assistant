@@ -3,8 +3,8 @@
 Moses Omondi's Personal AI Recruitment Assistant - Final Training
 ================================================================
 
-Train Moses's personal AI assistant using Llama 2 7B with the comprehensive
-MLOps/MLSecOps dataset. This AI will represent Moses to recruiters.
+Train Moses's personal AI assistant using Llama 2 7B with comprehensive
+DevSecOps + MLOps + MLSecOps + Real Education dataset. Represents Moses to recruiters.
 """
 
 import json
@@ -40,13 +40,13 @@ def train_moses_ai():
     print("🚀 Moses Omondi's Personal AI Recruitment Assistant Training")
     print("=" * 60)
     print("This AI will represent Moses to recruiters and companies")
-    print("Dataset: DevSecOps + MLOps + MLSecOps + AI Leadership + Authentic Profile")
+    print("Dataset: DevSecOps + MLOps + MLSecOps + Real Education + Authentic Profile")
     print("")
     
     # Configuration
     MODEL_NAME = "NousResearch/Llama-2-7b-chat-hf"
     OUTPUT_DIR = "models/moses-recruitment-assistant"
-    DATASET_PATH = "data/moses_devsecops_mlops_enhanced_dataset.json"
+    DATASET_PATH = "data/moses_final_enhanced_dataset.json"
     
     # Check GPU
     if torch.cuda.is_available():
