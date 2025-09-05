@@ -40,13 +40,13 @@ def train_moses_ai():
     print("🚀 Moses Omondi's Personal AI Recruitment Assistant Training")
     print("=" * 60)
     print("This AI will represent Moses to recruiters and companies")
-    print("Dataset: MLOps + MLSecOps + AI Leadership + Authentic Profile")
+    print("Dataset: DevSecOps + MLOps + MLSecOps + AI Leadership + Authentic Profile")
     print("")
     
     # Configuration
     MODEL_NAME = "NousResearch/Llama-2-7b-chat-hf"
     OUTPUT_DIR = "models/moses-recruitment-assistant"
-    DATASET_PATH = "data/moses_mlops_enhanced_dataset.json"
+    DATASET_PATH = "data/moses_devsecops_mlops_enhanced_dataset.json"
     
     # Check GPU
     if torch.cuda.is_available():
@@ -63,7 +63,7 @@ def train_moses_ai():
         with open(DATASET_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
         print(f"✅ Loaded {len(data)} training examples")
-        print("   📈 MLOps/MLSecOps Leadership examples")
+        print("   📈 DevSecOps + MLOps + MLSecOps Leadership examples")
         print("   🤖 AI/ML expertise positioning") 
         print("   📱 LinkedIn/GitHub authentic data")
         print("   💼 Professional recruitment scenarios")
@@ -191,7 +191,7 @@ def train_moses_ai():
     print(f"   🔄 Epochs: 2")
     print(f"   💾 Batch size: 1 (effective: 8)")
     print(f"   🧠 Model: {MODEL_NAME}")
-    print(f"   💼 Focus: Moses's MLOps/MLSecOps expertise")
+    print(f"   💼 Focus: Moses's DevSecOps + MLOps + MLSecOps expertise")
     
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
@@ -215,7 +215,7 @@ def train_moses_ai():
             "epochs": 2,
             "description": "Moses Omondi's Personal AI Recruitment Assistant",
             "capabilities": [
-                "MLOps and MLSecOps expertise",
+                "DevSecOps, MLOps and MLSecOps expertise",
                 "AI/ML leadership positioning", 
                 "Authentic GitHub/LinkedIn profile",
                 "Executive-level recruitment conversations",
